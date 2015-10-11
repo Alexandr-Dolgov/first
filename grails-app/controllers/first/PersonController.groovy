@@ -5,15 +5,23 @@ import java.text.SimpleDateFormat
 class PersonController {
     def scaffold = true
 
-    static defaultAction = "show"
+    static defaultAction = "showRandomPerson"
 
     def personService
 
-    def show() {
-        Person randomPerson = personService.getRandomPerson()
+    def showRandomPerson() {
+        Person person = personService.getRandomPerson()
         return [
-                name: randomPerson.name,
-                birthDate: new SimpleDateFormat("dd.MM.YYYY").format(randomPerson.birthDate)
+                name: person.name,
+                birthDate: new SimpleDateFormat("dd.MM.YYYY").format(person.birthDate)
+        ]
+    }
+
+    def showRandomTodayPerson() {
+        Person person = personService.getRandomTodayPerson()
+        return [
+                name: person?.name,
+                birthDate: (person) ? new SimpleDateFormat("dd.MM.YYYY").format(person.birthDate) : null
         ]
     }
 

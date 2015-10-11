@@ -22,8 +22,15 @@
             </div>
             <div align="center" style="clear: both">
                 <h2>
-                    <g:link action="show">
-                        Ещё
+                    <g:link action="showRandomPerson">
+                        Случайный человек
+                    </g:link>
+                </h2>
+            </div>
+            <div align="center">
+                <h2>
+                    <g:link action="showRandomTodayPerson">
+                        ДР сегодня
                     </g:link>
                 </h2>
             </div>
