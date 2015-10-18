@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat
 class PersonController {
     def scaffold = true
 
-    static defaultAction = "showRandomPerson"
+    static defaultAction = "showRandomTodayPerson"
 
     def personService
 
