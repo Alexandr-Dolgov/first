@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat
 class PersonController {
     def scaffold = true
 
-    static defaultAction = "showRandomTodayPerson"
+    static defaultAction = "showRandomPerson"
 
     def personService
 
@@ -13,7 +13,8 @@ class PersonController {
         Person person = personService.getRandomPerson()
         return [
                 name: person.name,
-                birthDate: new SimpleDateFormat("dd.MM.YYYY").format(person.birthDate)
+                birthDate: new SimpleDateFormat("dd.MM.YYYY").format(person.birthDate),
+                photo: person.photo.encodeAsBase64()
         ]
     }
 
