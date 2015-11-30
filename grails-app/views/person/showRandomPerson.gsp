@@ -34,34 +34,37 @@
     </nav>
 </header>
 <div class="container visible-xs">
-    <img src="${resource(dir: 'images', file: 'banner.jpg')}"
+    <img class="center-block" src="${resource(dir: 'images', file: 'banner.jpg')}"
          width="392" height="72" alt="vertical banner"/>
 </div>
-<div class="container">
+<div class="container spacer">
     <div class="row">
-        <div class="col-sm-3">
-            <div class="container">
-                <img src="data:image/jpeg;base64,${photo}" width="180">
+        <div class="col-sm-10">
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-4">
+                    <p class="text-center">${name} (${birthDate})</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <img class="center-block" src="data:image/jpeg;base64,${photo}" width="180">
+                </div>
+                <div class="col-sm-8">
+                    <div class="container">
+                        <p>info</p>
+                        <p>info</p>
+                        <p>info</p>
+                        <p>info</p>
+                        <p>info</p>
+                        <p>info</p>
+                        <p>info</p>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="col-sm-7">
-            <div class="container">
-                <p>Имя: ${name}</p>
-                <p>Дата рождения: ${birthDate}</p>
-                <p>info</p>
-                <p>info</p>
-                <p>info</p>
-                <p>info</p>
-                <p>info</p>
-                <p>info</p>
-                <p>info</p>
-            </div>
-        </div>
-        <div class="col-sm-2">
-            <div class="container hidden-xs">
-                <img src="${resource(dir: 'images', file: 'banner.jpg')}"
-                     width="120" height="600" alt="vertical banner"/>
-            </div>
+        <div class="col-sm-2 hidden-xs">
+            <img class="center-block" src="${resource(dir: 'images', file: 'banner.jpg')}"
+                 width="120" height="600" alt="vertical banner"/>
         </div>
     </div>
 </div>
