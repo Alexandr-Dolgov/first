@@ -5,6 +5,5 @@ class Vertex {
     float y
     float z
 
-    static constraints = {
-    }
+    static belongsTo = [Face]
 }

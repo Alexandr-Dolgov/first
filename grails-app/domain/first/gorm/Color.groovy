@@ -6,7 +6,4 @@ class Color {
     int b
 
     static belongsTo = [material: Material]
-
-    static constraints = {
-    }
 }

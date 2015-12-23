@@ -1,7 +1,9 @@
 package first
 
 import first.gorm.Color
+import first.gorm.Face
 import first.gorm.Material
+import first.gorm.Mesh
 import first.gorm.Vertex
 
 import java.text.SimpleDateFormat
@@ -37,14 +39,6 @@ class PersonController {
     def gorm() {
         println 'start gorm'
 
-        /*
-        def v1 = new Vertex(x:1, y:2, z:3)
-        v1.save()
-        v1.get(1)
-        v1.read(1)
-        v1.load(1)
-        */
-
         def coal = new Material(name: 'уголь', color: new Color(r: 0, g: 0, b: 0))
         coal.save()
 
@@ -58,6 +52,20 @@ class PersonController {
 
         //удаляется материал, удаляется и цвет, потомучто композиция, потомучто Color belongsTo Material
         coal.delete()
+
+        //Face compose three vertexes
+        def f = new Face(vertexes: [
+                new Vertex(x:0, y:0, z:0),
+                new Vertex(x:1, y:0, z:0),
+                new Vertex(x:0, y:1, z:0)
+        ])
+        f.save()
+        assert !f.hasErrors()
+
+        //Mesh compose any count faces
+        def mesh = new Mesh()
+        mesh.addToFaces(f)
+        mesh.save()
 
         println 'finish gorm'
     }
