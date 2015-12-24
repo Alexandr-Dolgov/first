@@ -5,5 +5,5 @@ class Vertex {
     float y
     float z
 
-    static belongsTo = [Face]
+    static belongsTo = [Face]   //todo [face: Face]
 }

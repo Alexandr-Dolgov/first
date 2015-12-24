@@ -2,8 +2,10 @@ package first
 
 import first.gorm.Color
 import first.gorm.Face
+import first.gorm.Geometry
 import first.gorm.Material
 import first.gorm.Mesh
+import first.gorm.Spatial
 import first.gorm.Vertex
 
 import java.text.SimpleDateFormat
@@ -37,8 +39,6 @@ class PersonController {
     }
 
     def gorm() {
-        println 'start gorm'
-
         def coal = new Material(name: 'уголь', color: new Color(r: 0, g: 0, b: 0))
         coal.save()
 
@@ -54,18 +54,34 @@ class PersonController {
         coal.delete()
 
         //Face compose three vertexes
-        def f = new Face(vertexes: [
+        def f1 = new Face(vertexes: [
                 new Vertex(x:0, y:0, z:0),
                 new Vertex(x:1, y:0, z:0),
                 new Vertex(x:0, y:1, z:0)
         ])
-        f.save()
-        assert !f.hasErrors()
+        f1.save()
+        assert !f1.hasErrors()
+
+        def f2 = new Face()
+        f2.addToVertexes(new Vertex(x:0, y:0, z:0))
+        f2.addToVertexes(new Vertex(x:1, y:0, z:0))
+        f2.addToVertexes(new Vertex(x:0, y:1, z:0))
+        f2.save()
+        assert !f2.hasErrors()
 
         //Mesh compose any count faces
         def mesh = new Mesh()
-        mesh.addToFaces(f)
-        mesh.save()
+        mesh.addToFaces(f1)
+        //mesh.save()
+
+        //Spatial
+        def s = new Spatial(name: 'Artur')
+        s.userData = [eyeColor: 'black', hairColor: 'blue']
+        s.save()
+
+        //Geometry compose one mesh
+        def g = new Geometry(name: 'новая геометрия', mesh: mesh)
+        g.save()
 
         println 'finish gorm'
     }
